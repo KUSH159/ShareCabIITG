@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title %}My trips {% endblock %}
+{% block content %}
+{% if request.user.is_authenticated %}
+	{% if trips %}
+		<ul>
+			{% for trip in trips %}
+			<li><a href = "/trips/{{request.user.username}}/{{trip.id}}">{{trip.source}}-{{trip.destination}}</a></li>
+			{% endfor %}
+		</ul>
+		<p><a href = "/trips/{{request.user.username}}/addtrip">Add a trip</a></p>
+	{% else %}
+		<p>No trips added.</p>
+
+		<p><a href = "/trips/{{request.user.username}}/addtrip">Add a trip</a></p>
+	{% endif %}
+{% else %}
+	<p>You are not logged in</p>
+	<a href = "{% url 'home' %}">Home</a>
+{% endif %}
+{% endblock %}

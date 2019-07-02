@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block title %}View Trip{% endblock %}
+
+{% block content %}
+<h2><p>{{username}}</p></h2>
+<h3>Matched Trips:</h3>
+<ul>
+{% for match in matched %}
+<li>{{match.trip_datetime}}, User: <a href = "/">{{match.customuser.username}}</a></li><br>	
+	{% endfor %}
+{% endblock %}
+

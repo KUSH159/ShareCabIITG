@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}AddTrip{% endblock %}
+
+{% block content %}
+
+{% if request.user.is_authenticated %}
+	<p><h1>Add Trip</h1></p>
+	<form action ="/trips/{{request.user.username}}/addtrip" method = "POST">
+		{% csrf_token %}
+		<p><input type = "radio" name = 'choice' value = "Camp2Air" id = "1" >	
+		<label for="1">Campus to Airport</label></p>
+		<p><input type = "radio" name = 'choice' value = "Air2Camp" id = "2">
+		<label for="2">Airport to Campus</label></p>
+		<p><input type = "radio" name = 'choice' value = "Camp2Rail" id = "3">
+		<label for="2">Campus to Railway Station</label></p>
+		<p><input type = "radio" name = 'choice' value = "Rail2Camp" id = "4">
+		<label for="2">Railway Station to Campus</label></p>
+		<p><input type = "datetime-local" name = "datetime"></p>
+		<input type = "submit" value = "AddTrip">
+	</form>
+{% else %}
+	<p>You are not logged in</p>
+	<a href = "{% url 'home' %}">Home</a>
+{% endif %}
+{% endblock %}
+
