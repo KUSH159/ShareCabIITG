@@ -47,3 +47,6 @@ def ViewTrip(request,username,trip_id):
     matched = matched.filter(trip_datetime__lte=(date+td)).filter(trip_datetime__gte=(date-td))
     return render(request, 'trips/viewtrip.html', {'matched' : matched, 'username' : username, 'trip_id': trip_id,})
 
+def ViewProfile(request,username):
+    user = User.objects.get(username = username)
+    return render(request, 'profile.html', {'user':user,})

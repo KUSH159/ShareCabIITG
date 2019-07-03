@@ -6,7 +6,7 @@
 <h3>Matched Trips:</h3>
 <ul>
 {% for match in matched %}
-<li>{{match.trip_datetime}}, User: <a href = "/">{{match.customuser.username}}</a></li><br>	
+<li>{{match.trip_datetime}}, User: <a href = "/trips/profile/{{match.customuser.username}}">{{match.customuser.username}}</a></li><br>	
 	{% endfor %}
 {% endblock %}
 
